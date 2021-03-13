@@ -18,7 +18,7 @@ public class ConnectApiClientIT {
   static SaslPlaintextKafkaContainer container;
   static ConnectContainer connectContainer;
 
-  static KConnectApiClient client;
+  KConnectApiClient client;
 
   @BeforeClass
   public static void setup() {
@@ -64,5 +64,36 @@ public class ConnectApiClientIT {
 
     connectors = client.getConnectors();
     assertThat(connectors).isEmpty();
+  }
+
+  @Test
+  public void testAddStartStopConnector() throws IOException, InterruptedException {
+    String connectorName = "file-source-connector";
+    String connectorConfig =
+        "{\n"
+            + "    \"name\": \""
+            + connectorName
+            + "\",\n"
+            + "    \"config\": {\n"
+            + "        \"connector.class\": \"FileStreamSource\",\n"
+            + "        \"tasks.max\": \"1\",\n"
+            + "        \"file\": \"/tmp/test.txt\",\n"
+            + "        \"topic\": \"connect-test\"\n"
+            + "    }\n"
+            + "}";
+
+    client.add(connectorConfig);
+    Thread.sleep(1000);
+    String status = client.status(connectorName);
+    Thread.sleep(1000);
+    assertThat(status).isEqualTo("RUNNING");
+
+    client.pause(connectorName);
+    Thread.sleep(1000);
+
+    status = client.status(connectorName);
+    Thread.sleep(1000);
+
+    assertThat(status).isEqualTo("PAUSED");
   }
 }
