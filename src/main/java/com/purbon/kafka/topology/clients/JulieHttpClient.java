@@ -23,15 +23,19 @@ public abstract class JulieHttpClient {
 
   public JulieHttpClient(String server) {
     this.server = server;
+    this.token = "";
   }
 
   private HttpRequest.Builder setupARequest(String url, String token, long timeoutMs) {
-    return HttpRequest.newBuilder()
-        .uri(URI.create(server + url))
-        .timeout(Duration.ofMillis(timeoutMs))
-        .header("accept", " application/json")
-        .header("Content-Type", "application/json")
-        .header("Authorization", "Basic " + token);
+    HttpRequest.Builder builder =
+        HttpRequest.newBuilder(URI.create(server + url))
+            .timeout(Duration.ofMillis(timeoutMs))
+            .header("accept", " application/json")
+            .header("Content-Type", "application/json");
+    if (!token.isBlank()) {
+      builder = builder.header("Authorization", "Basic " + token);
+    }
+    return builder;
   }
 
   public void login(String user, String password) {
@@ -79,9 +83,13 @@ public abstract class JulieHttpClient {
   }
 
   private HttpRequest deleteRequest(String url, String body, String token, long timeoutMs) {
-    return setupARequest(url, token, timeoutMs)
-        .method("DELETE", HttpRequest.BodyPublishers.ofString(body))
-        .build();
+    HttpRequest.Builder builder = setupARequest(url, token, timeoutMs);
+    if (!body.isEmpty()) {
+      builder = builder.method("DELETE", HttpRequest.BodyPublishers.ofString(body));
+    } else {
+      builder = builder.DELETE();
+    }
+    return builder.build();
   }
 
   private String doRequest(HttpRequest request) throws IOException {
@@ -93,11 +101,12 @@ public abstract class JulieHttpClient {
       LOGGER.debug("method: " + request.method() + " response: " + response);
       int statusCode = response.statusCode();
       if (statusCode < 200 || statusCode > 299) {
+        String body = response.body() != null ? response.body() : "";
         throw new IOException(
             "Something happened with the connection, response status code: "
                 + statusCode
-                + " "
-                + request);
+                + " body: "
+                + body);
       }
 
       if (response.body() != null) {

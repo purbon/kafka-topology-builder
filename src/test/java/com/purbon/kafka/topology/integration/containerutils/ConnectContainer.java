@@ -1,6 +1,7 @@
 package com.purbon.kafka.topology.integration.containerutils;
 
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
 public class ConnectContainer extends GenericContainer<ConnectContainer> {
@@ -40,6 +41,8 @@ public class ConnectContainer extends GenericContainer<ConnectContainer> {
     withEnv("CONNECT_SECURITY_PROTOCOL", "SASL_PLAINTEXT");
     withNetworkAliases("connect");
     withNetwork(kafka.getNetwork());
+
+    waitingFor(Wait.forHttp("/"));
   }
 
   private String saslConfig() {
