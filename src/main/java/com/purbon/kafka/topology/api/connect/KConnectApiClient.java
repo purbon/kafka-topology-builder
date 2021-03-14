@@ -30,11 +30,13 @@ public class KConnectApiClient extends JulieHttpClient {
   public String status(String connectorName) throws IOException {
     Response response = doGet("/connectors/" + connectorName + "/status");
     Map<String, Object> map = JSON.toMap(response.getResponseAsString());
+
     if (map.containsKey("error_code")) {
-      return (String) map.get("message");
-    } else {
-      return ((Map<String, String>) map.get("connector")).get("state");
+      throw new IOException(map.get("message").toString());
     }
+
+    return ((Map<String, String>) map.get("connector")).get("state");
+
   }
 
   public void pause(String connectorName) throws IOException {
