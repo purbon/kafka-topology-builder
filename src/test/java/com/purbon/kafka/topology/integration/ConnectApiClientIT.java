@@ -84,16 +84,14 @@ public class ConnectApiClientIT {
 
     client.add(connectorConfig);
     Thread.sleep(1000);
+
     String status = client.status(connectorName);
-    Thread.sleep(1000);
     assertThat(status).isEqualTo("RUNNING");
 
     client.pause(connectorName);
     Thread.sleep(1000);
 
     status = client.status(connectorName);
-    Thread.sleep(1000);
-
     assertThat(status).isEqualTo("PAUSED");
   }
 }
