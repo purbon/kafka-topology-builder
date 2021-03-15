@@ -75,9 +75,7 @@ public abstract class JulieHttpClient {
   }
 
   private HttpRequest postRequest(String url, String body, String token, long timeoutMs) {
-    return setupARequest(url, token, timeoutMs)
-        .POST(ofString(body))
-        .build();
+    return setupARequest(url, token, timeoutMs).POST(ofString(body)).build();
   }
 
   protected void doPut(String url) throws IOException {

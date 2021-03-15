@@ -23,21 +23,22 @@ projects:
             - "topicC"
             - "topicD"
     connectors:
-      - principal: "User:Connect1"
-        cluster_id: "foo"
-        group: "group"
-        status_topic: "status"
-        offset_topic: "offset"
-        configs_topic: "configs"
-        topics:
-          read:
-            - "topicA"
-            - "topicB"
-      - principal: "User:Connect2"
-        topics:
-          write:
-            - "topicC"
-            - "topicD"
+      access_control:
+        - principal: "User:Connect1"
+          cluster_id: "foo"
+          group: "group"
+          status_topic: "status"
+          offset_topic: "offset"
+          configs_topic: "configs"
+          topics:
+            read:
+              - "topicA"
+              - "topicB"
+        - principal: "User:Connect2"
+          topics:
+            write:
+              - "topicC"
+              - "topicD"
     topics:
       - name: "foo"
         config:
