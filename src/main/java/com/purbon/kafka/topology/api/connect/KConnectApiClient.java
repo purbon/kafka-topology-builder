@@ -36,7 +36,6 @@ public class KConnectApiClient extends JulieHttpClient {
     }
 
     return ((Map<String, String>) map.get("connector")).get("state");
-
   }
 
   public void pause(String connectorName) throws IOException {

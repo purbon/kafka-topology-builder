@@ -1,10 +1,14 @@
 package com.purbon.kafka.topology.clients;
 
+import static java.net.http.HttpRequest.BodyPublishers.noBody;
+import static java.net.http.HttpRequest.BodyPublishers.ofString;
+
 import com.purbon.kafka.topology.api.mds.Response;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublisher;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.Base64;
@@ -72,7 +76,7 @@ public abstract class JulieHttpClient {
 
   private HttpRequest postRequest(String url, String body, String token, long timeoutMs) {
     return setupARequest(url, token, timeoutMs)
-        .POST(HttpRequest.BodyPublishers.ofString(body))
+        .POST(ofString(body))
         .build();
   }
 
@@ -83,7 +87,7 @@ public abstract class JulieHttpClient {
   }
 
   private HttpRequest putRequest(String url, String token, long timeoutMs) {
-    return setupARequest(url, token, timeoutMs).PUT(HttpRequest.BodyPublishers.noBody()).build();
+    return setupARequest(url, token, timeoutMs).PUT(noBody()).build();
   }
 
   protected void doDelete(String url, String body) throws IOException {
@@ -94,11 +98,8 @@ public abstract class JulieHttpClient {
 
   private HttpRequest deleteRequest(String url, String body, String token, long timeoutMs) {
     HttpRequest.Builder builder = setupARequest(url, token, timeoutMs);
-    if (!body.isEmpty()) {
-      builder = builder.method("DELETE", HttpRequest.BodyPublishers.ofString(body));
-    } else {
-      builder = builder.DELETE();
-    }
+    BodyPublisher bodyPublisher = !body.isEmpty() ? ofString(body) : noBody();
+    builder = builder.method("DELETE", bodyPublisher);
     return builder.build();
   }
 
