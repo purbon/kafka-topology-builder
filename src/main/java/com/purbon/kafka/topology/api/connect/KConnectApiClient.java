@@ -1,19 +1,20 @@
 package com.purbon.kafka.topology.api.connect;
 
 import com.purbon.kafka.topology.api.mds.Response;
+import com.purbon.kafka.topology.clients.ArtefactClient;
 import com.purbon.kafka.topology.clients.JulieHttpClient;
 import com.purbon.kafka.topology.utils.JSON;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class KConnectApiClient extends JulieHttpClient {
+public class KConnectApiClient extends JulieHttpClient implements ArtefactClient {
 
   public KConnectApiClient(String server) {
     super(server);
   }
 
-  public List<String> getConnectors() throws IOException {
+  public List<String> list() throws IOException {
     Response response = doGet("/connectors");
     return JSON.toArray(response.getResponseAsString());
   }

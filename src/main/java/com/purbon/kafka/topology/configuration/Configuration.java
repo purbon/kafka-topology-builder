@@ -290,6 +290,10 @@ public class Configuration {
     return config.getBoolean(ALLOW_DELETE_PRINCIPALS);
   }
 
+  public boolean isAllowDeleteConnectArtefacts() {
+    return config.getBoolean(ALLOW_DELETE_CONNECT_ARTEFACTS);
+  }
+
   public boolean enabledPrincipalTranslation() {
     return config.getBoolean(TOPOLOGY_PRINCIPAL_TRANSLATION_ENABLED_CONFIG);
   }
@@ -324,4 +328,6 @@ public class Configuration {
         .map(server -> server.split(":"))
         .collect(Collectors.toMap(server -> server[0].strip(), server -> server[1].strip()));
   }
+
+
 }

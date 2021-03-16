@@ -4,10 +4,12 @@ public abstract class Artefact {
 
   private String path;
   private String serverLabel;
+  private String name;
 
-  public Artefact(String path, String serverLabel) {
+  public Artefact(String path, String serverLabel, String name) {
     this.path = path;
     this.serverLabel = serverLabel;
+    this.name = name;
   }
 
   public String getPath() {
@@ -16,5 +18,9 @@ public abstract class Artefact {
 
   public String getServerLabel() {
     return serverLabel;
+  }
+
+  public String name() {
+    return name;
   }
 }

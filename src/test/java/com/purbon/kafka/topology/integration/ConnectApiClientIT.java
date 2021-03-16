@@ -57,12 +57,12 @@ public class ConnectApiClientIT {
 
     client.add(connectorConfig);
 
-    List<String> connectors = client.getConnectors();
+    List<String> connectors = client.list();
     assertThat(connectors).contains(connectorName);
 
     client.delete(connectorName);
 
-    connectors = client.getConnectors();
+    connectors = client.list();
     assertThat(connectors).isEmpty();
   }
 
