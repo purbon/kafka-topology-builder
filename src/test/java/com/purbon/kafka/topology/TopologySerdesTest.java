@@ -336,6 +336,18 @@ public class TopologySerdesTest {
   }
 
   @Test
+  public void testBackwardsCompatibleDescriptorForConnectors() {
+    Topology topology =
+        parser.deserialise(TestUtils.getResourceFile("/backwards-comp-descriptor.yaml"));
+    Project fooProject = topology.getProjects().get(0);
+
+    assertEquals("foo", fooProject.getName());
+    assertEquals(2, fooProject.getConnectors().size());
+    assertEquals("User:Connect1", fooProject.getConnectors().get(0).getPrincipal());
+    assertEquals("User:Connect2", fooProject.getConnectors().get(1).getPrincipal());
+  }
+
+  @Test
   public void testTopicNameWithCustomSeparator() {
     Map<String, String> cliOps = new HashMap<>();
     cliOps.put(BROKERS_OPTION, "");
