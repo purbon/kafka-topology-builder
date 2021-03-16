@@ -1,15 +1,13 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.Configuration.REDIS_HOST_CONFIG;
-import static com.purbon.kafka.topology.Configuration.REDIS_PORT_CONFIG;
-import static com.purbon.kafka.topology.Configuration.REDIS_STATE_PROCESSOR_CLASS;
-import static com.purbon.kafka.topology.Configuration.STATE_PROCESSOR_DEFAULT_CLASS;
+import static com.purbon.kafka.topology.configuration.Constants.*;
 
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClientBuilder;
 import com.purbon.kafka.topology.api.mds.MDSApiClientBuilder;
 import com.purbon.kafka.topology.backend.FileBackend;
 import com.purbon.kafka.topology.backend.RedisBackend;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.exceptions.ValidationException;
 import com.purbon.kafka.topology.model.Topology;
 import com.purbon.kafka.topology.schemas.SchemaRegistryManager;

@@ -2,7 +2,7 @@ package com.purbon.kafka.topology;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static com.purbon.kafka.topology.CommandLineInterface.BROKERS_OPTION;
-import static com.purbon.kafka.topology.Configuration.*;
+import static com.purbon.kafka.topology.configuration.Constants.*;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -16,6 +16,7 @@ import static org.mockito.Mockito.*;
 
 import com.purbon.kafka.topology.actions.Action;
 import com.purbon.kafka.topology.api.adminclient.AclBuilder;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.*;
 import com.purbon.kafka.topology.model.Impl.ProjectImpl;
 import com.purbon.kafka.topology.model.Impl.TopicImpl;

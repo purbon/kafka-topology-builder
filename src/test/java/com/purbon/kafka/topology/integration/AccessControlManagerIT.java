@@ -7,9 +7,9 @@ import static org.mockito.Mockito.when;
 
 import com.purbon.kafka.topology.AccessControlManager;
 import com.purbon.kafka.topology.BackendController;
-import com.purbon.kafka.topology.Configuration;
 import com.purbon.kafka.topology.ExecutionPlan;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.integration.containerutils.ContainerFactory;
 import com.purbon.kafka.topology.integration.containerutils.ContainerTestUtils;
 import com.purbon.kafka.topology.integration.containerutils.SaslPlaintextKafkaContainer;

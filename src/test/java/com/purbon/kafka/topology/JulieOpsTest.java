@@ -1,13 +1,14 @@
 package com.purbon.kafka.topology;
 
 import static com.purbon.kafka.topology.CommandLineInterface.*;
-import static com.purbon.kafka.topology.Configuration.CONFLUENT_SCHEMA_REGISTRY_URL_CONFIG;
+import static com.purbon.kafka.topology.configuration.Constants.CONFLUENT_SCHEMA_REGISTRY_URL_CONFIG;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;
 
 import com.purbon.kafka.topology.BackendController.Mode;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
 import com.purbon.kafka.topology.backend.RedisBackend;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.exceptions.TopologyParsingException;
 import com.purbon.kafka.topology.utils.TestUtils;
 import java.io.IOException;

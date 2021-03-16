@@ -9,6 +9,7 @@ import com.purbon.kafka.topology.actions.access.ClearBindings;
 import com.purbon.kafka.topology.actions.access.CreateBindings;
 import com.purbon.kafka.topology.actions.access.builders.*;
 import com.purbon.kafka.topology.actions.access.builders.rbac.*;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.Component;
 import com.purbon.kafka.topology.model.DynamicUser;
 import com.purbon.kafka.topology.model.Platform;

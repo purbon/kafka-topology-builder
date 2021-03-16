@@ -1,5 +1,6 @@
 package com.purbon.kafka.topology;
 
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.exceptions.ValidationException;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;

@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology.model.Impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.purbon.kafka.topology.Configuration;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.Platform;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topology;

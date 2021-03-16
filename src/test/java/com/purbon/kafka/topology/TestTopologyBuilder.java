@@ -1,5 +1,6 @@
 package com.purbon.kafka.topology;
 
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.Impl.ProjectImpl;
 import com.purbon.kafka.topology.model.Impl.TopicImpl;
 import com.purbon.kafka.topology.model.Impl.TopologyImpl;

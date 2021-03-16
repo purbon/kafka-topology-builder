@@ -1,5 +1,6 @@
 package com.purbon.kafka.topology;
 
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.PlanMap;
 import com.purbon.kafka.topology.model.Topology;
 import com.purbon.kafka.topology.serdes.PlanMapSerdes;

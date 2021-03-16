@@ -1,6 +1,6 @@
 package com.purbon.kafka.topology.api.adminclient;
 
-import com.purbon.kafka.topology.Configuration;
+import com.purbon.kafka.topology.configuration.Configuration;
 import java.io.IOException;
 import java.util.Properties;
 import org.apache.kafka.clients.admin.AdminClient;

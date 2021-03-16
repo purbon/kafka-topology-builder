@@ -2,13 +2,14 @@ package com.purbon.kafka.topology;
 
 import static com.purbon.kafka.topology.CommandLineInterface.ALLOW_DELETE_OPTION;
 import static com.purbon.kafka.topology.CommandLineInterface.BROKERS_OPTION;
-import static com.purbon.kafka.topology.Configuration.*;
 import static com.purbon.kafka.topology.TopicManager.NUM_PARTITIONS;
+import static com.purbon.kafka.topology.configuration.Constants.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
 import com.purbon.kafka.topology.actions.Action;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.Impl.ProjectImpl;
 import com.purbon.kafka.topology.model.Impl.TopicImpl;
 import com.purbon.kafka.topology.model.Impl.TopologyImpl;

@@ -2,9 +2,10 @@ package com.purbon.kafka.topology;
 
 import static com.purbon.kafka.topology.CommandLineInterface.ADMIN_CLIENT_CONFIG_OPTION;
 import static com.purbon.kafka.topology.CommandLineInterface.BROKERS_OPTION;
-import static com.purbon.kafka.topology.Configuration.TOPOLOGY_VALIDATIONS_CONFIG;
+import static com.purbon.kafka.topology.configuration.Constants.TOPOLOGY_VALIDATIONS_CONFIG;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.Topology;
 import com.purbon.kafka.topology.serdes.TopologySerdes;
 import com.purbon.kafka.topology.utils.TestUtils;
@@ -37,7 +38,7 @@ public class TopologyValidationTest {
   }
 
   @Test
-  public void testInvalidExecutionBecuaseofNumberOfPartitions() {
+  public void testInvalidExecutionBecauseOfNumberOfPartitions() {
 
     Topology topology =
         parser.deserialise(TestUtils.getResourceFile("/descriptor-with-camelCaseNames.yml"));

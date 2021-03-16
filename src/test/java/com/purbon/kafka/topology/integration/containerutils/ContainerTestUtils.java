@@ -2,9 +2,9 @@ package com.purbon.kafka.topology.integration.containerutils;
 
 import com.purbon.kafka.topology.AccessControlProvider;
 import com.purbon.kafka.topology.BindingsBuilderProvider;
-import com.purbon.kafka.topology.Configuration;
 import com.purbon.kafka.topology.JulieOps;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.roles.SimpleAclsProvider;
 import com.purbon.kafka.topology.roles.acls.AclsBindingsBuilder;
 import com.purbon.kafka.topology.utils.TestUtils;

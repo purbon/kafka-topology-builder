@@ -1,11 +1,12 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.Configuration.*;
+import static com.purbon.kafka.topology.configuration.Constants.*;
 
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
 import com.purbon.kafka.topology.api.ccloud.CCloudCLI;
 import com.purbon.kafka.topology.api.mds.MDSApiClient;
 import com.purbon.kafka.topology.api.mds.MDSApiClientBuilder;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.roles.CCloudAclsProvider;
 import com.purbon.kafka.topology.roles.RBACProvider;
 import com.purbon.kafka.topology.roles.SimpleAclsProvider;

@@ -1,10 +1,11 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.Configuration.CONNECTOR_ALLOW_TOPIC_CREATE;
+import static com.purbon.kafka.topology.configuration.Constants.*;
 import static java.util.Collections.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.purbon.kafka.topology.api.adminclient.AclBuilder;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.DynamicUser;
 import com.purbon.kafka.topology.model.users.Connector;
 import com.purbon.kafka.topology.model.users.Consumer;

@@ -1,8 +1,8 @@
 package com.purbon.kafka.topology.serviceAccounts;
 
-import com.purbon.kafka.topology.Configuration;
 import com.purbon.kafka.topology.PrincipalProvider;
 import com.purbon.kafka.topology.api.ccloud.CCloudCLI;
+import com.purbon.kafka.topology.configuration.Configuration;
 import com.purbon.kafka.topology.model.cluster.ServiceAccount;
 import java.io.IOException;
 import java.util.HashSet;
