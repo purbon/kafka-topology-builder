@@ -336,6 +336,21 @@ public class TopologySerdesTest {
   }
 
   @Test
+  public void testConnectorArtefactsRetrieval() {
+    Topology topology = parser.deserialise(TestUtils.getResourceFile("/descriptor.yaml"));
+    Project project = topology.getProjects().get(0);
+    assertEquals(2, project.getConnectorArtefacts().size());
+    assertThat(project.getConnectorArtefacts().get(0))
+        .hasFieldOrPropertyWithValue("path", "connectors/sink-jdbc.json");
+    assertThat(project.getConnectorArtefacts().get(0))
+        .hasFieldOrPropertyWithValue("serverLabel", "connector0");
+    assertThat(project.getConnectorArtefacts().get(1))
+        .hasFieldOrPropertyWithValue("path", "connectors/source-jdbc.json");
+    assertThat(project.getConnectorArtefacts().get(1))
+        .hasFieldOrPropertyWithValue("serverLabel", "connector0");
+  }
+
+  @Test
   public void testBackwardsCompatibleDescriptorForConnectors() {
     Topology topology =
         parser.deserialise(TestUtils.getResourceFile("/backwards-comp-descriptor.yaml"));

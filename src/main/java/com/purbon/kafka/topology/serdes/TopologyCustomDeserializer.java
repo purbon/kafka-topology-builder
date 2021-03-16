@@ -15,6 +15,7 @@ import com.purbon.kafka.topology.Configuration;
 import com.purbon.kafka.topology.model.*;
 import com.purbon.kafka.topology.model.Impl.ProjectImpl;
 import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.artefact.KafkaConnectArtefact;
 import com.purbon.kafka.topology.model.users.Connector;
 import com.purbon.kafka.topology.model.users.Consumer;
 import com.purbon.kafka.topology.model.users.KStream;
@@ -56,6 +57,9 @@ public class TopologyCustomDeserializer extends StdDeserializer<Topology> {
   private static final String RBAC_KEY = "rbac";
   private static final String TOPICS_KEY = "topics";
   private static final String PRINCIPAL_KEY = "principal";
+
+  private static final String ACCESS_CONTROL = "access_control";
+  private static final String ARTEFACTS = "artefacts";
 
   private final Configuration config;
 
@@ -221,14 +225,22 @@ public class TopologyCustomDeserializer extends StdDeserializer<Topology> {
   }
 
   private Optional<PlatformSystem> doKafkaConnectElements(JsonParser parser, JsonNode node)
-      throws JsonProcessingException {
-    JsonNode keyNode = node;
-    if (node.has("access_control")) {
-      keyNode = node.get("access_control");
+      throws IOException {
+
+    JsonNode acNode = node;
+    if (node.has(ACCESS_CONTROL)) {
+      acNode = node.get(ACCESS_CONTROL);
     }
     List<Connector> connectors =
-        new JsonSerdesUtils<Connector>().parseApplicationUser(parser, keyNode, Connector.class);
-    return Optional.of(new PlatformSystem(connectors, Collections.emptyList()));
+        new JsonSerdesUtils<Connector>().parseApplicationUser(parser, acNode, Connector.class);
+    List<KafkaConnectArtefact> artefacts = Collections.emptyList();
+    if (node.has(ARTEFACTS)) {
+      artefacts =
+          new JsonSerdesUtils<KafkaConnectArtefact>()
+              .parseApplicationUser(parser, node.get(ARTEFACTS), KafkaConnectArtefact.class);
+    }
+
+    return Optional.of(new PlatformSystem(connectors, artefacts));
   }
 
   private Optional<PlatformSystem> doStreamsElements(JsonParser parser, JsonNode node)

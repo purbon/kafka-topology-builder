@@ -23,6 +23,11 @@ projects:
             - "topicC"
             - "topicD"
     connectors:
+      artefacts:
+        - path: "connectors/sink-jdbc.json"
+          server: "connector0"
+        - path: "connectors/source-jdbc.json"
+          server: "connector0"
       access_control:
         - principal: "User:Connect1"
           cluster_id: "foo"

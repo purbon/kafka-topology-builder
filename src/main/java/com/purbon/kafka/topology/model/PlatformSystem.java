@@ -6,7 +6,7 @@ import java.util.List;
 public class PlatformSystem<T extends User> {
 
   private List<T> accessControlLists;
-  private List<? extends SystemItem> items;
+  private List<? extends Artefact> artefacts;
 
   public PlatformSystem() {
     this(Collections.emptyList(), Collections.emptyList());
@@ -16,16 +16,16 @@ public class PlatformSystem<T extends User> {
     this(accessControlLists, Collections.emptyList());
   }
 
-  public PlatformSystem(List<T> accessControlLists, List<? extends SystemItem> items) {
+  public PlatformSystem(List<T> accessControlLists, List<? extends Artefact> artefacts) {
     this.accessControlLists = accessControlLists;
-    this.items = items;
+    this.artefacts = artefacts;
   }
 
   public List<T> getAccessControlLists() {
     return accessControlLists;
   }
 
-  public List<? extends SystemItem> getItems() {
-    return items;
+  public List<? extends Artefact> getArtefacts() {
+    return artefacts;
   }
 }
